@@ -5,12 +5,12 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: POAP
-    network: mainnet
+    name: Poap
+    network: {{ network }}
     source:
-      address: "0x22C1f6050E56d2876009903609a2cC3fEf83B415"
-      abi: POAP
-      startBlock: 7844214
+      address: "{{ address }}"
+      abi: Poap
+      startBlock: {{ startBlock }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -19,10 +19,10 @@ dataSources:
         - EventToken
         - Transfer
       abis:
-        - name: POAP
-          file: ./abis/POAP.json
+        - name: Poap
+          file: ./abis/{{ file }}.json
       eventHandlers:
-        - event: EventToken(uint256,uint256)
+        - event: {{ tokenEvent }}
           handler: handleEventToken
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer

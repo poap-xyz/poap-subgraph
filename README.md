@@ -1,12 +1,42 @@
 # POAP Subgraph
 
-This Subgraph sources events from the POAP contract in Mainnet.
+This Subgraph sources events from the POAP contract in different networks.
 
-Endpoint: [https://api.thegraph.com/subgraphs/name/poap-xyz/poap](https://api.thegraph.com/subgraphs/name/poap-xyz/poap)
+## Deploying the subgraph:
 
-Subgraph page: [https://thegraph.com/explorer/subgraph/poap-xyz/poap](https://thegraph.com/explorer/subgraph/poap-xyz/poap) 
+**First time only**
+```ssh
+yarn install
+```
 
-Deploying the subgraph in a different network:
+Available networks: mainnet, xdai, sokol, kovan, ropsten 
 
-- Change the `address`, `network` and `startBlock` from subgraph.yaml
-- Change the graph url in the `deploy` script
+```ssh
+yarn prepare:<network>
+yarn codegen
+yarn build
+yarn deploy:<network>
+```
+
+## Deplyments
+
+### Mainnet
+Endpoint: [https://api.thegraph.com/subgraphs/name/poap-xyz/poap](https://api.thegraph.com/subgraphs/name/poap-xyz/poap) \
+Subgraph page: [https://thegraph.com/explorer/subgraph/poap-xyz/poap](https://thegraph.com/explorer/subgraph/poap-xyz/poap)
+
+### XDai
+Endpoint: [https://api.thegraph.com/subgraphs/name/poap-xyz/poap-xdai](https://api.thegraph.com/subgraphs/name/poap-xyz/poap) \
+Subgraph page: [https://thegraph.com/explorer/subgraph/poap-xyz/poap-xdai](https://thegraph.com/explorer/subgraph/poap-xyz/poap)
+
+
+### Sokol
+Endpoint: [https://api.thegraph.com/subgraphs/name/poap-xyz/poap-sokol](https://api.thegraph.com/subgraphs/name/poap-xyz/poap) \
+Subgraph page: [https://thegraph.com/explorer/subgraph/poap-xyz/poap-sokol](https://thegraph.com/explorer/subgraph/poap-xyz/poap) 
+
+### Ropsten
+Endpoint: [https://api.thegraph.com/subgraphs/name/poap-xyz/poap-ropsten](https://api.thegraph.com/subgraphs/name/poap-xyz/poap) \
+Subgraph page: [https://thegraph.com/explorer/subgraph/poap-xyz/poap-ropsten](https://thegraph.com/explorer/subgraph/poap-xyz/poap) 
+
+### Kovan
+Endpoint: [https://api.thegraph.com/subgraphs/name/poap-xyz/poap-kovan](https://api.thegraph.com/subgraphs/name/poap-xyz/poap) \
+Subgraph page: [https://thegraph.com/explorer/subgraph/poap-xyz/poap-kovan](https://thegraph.com/explorer/subgraph/poap-xyz/poap) 

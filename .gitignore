@@ -60,6 +60,8 @@ typings/
 # next.js build output
 .next
 
+subgraph.yaml
+.idea/
 
 build
 generated
