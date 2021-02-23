@@ -18,7 +18,7 @@ yarn build
 yarn deploy:<network>
 ```
 
-## Deplyments
+## Deployments
 
 ### Mainnet
 Endpoint: [https://api.thegraph.com/subgraphs/name/poap-xyz/poap](https://api.thegraph.com/subgraphs/name/poap-xyz/poap) \

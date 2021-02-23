@@ -14,7 +14,7 @@ import {
   Transfer,
 } from '../generated/schema'
 
-const BURN_ADDRESS = '0x0000000000000000000000000000000000000000'
+const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
 
 function createEventID(event: ethereum.Event): string
@@ -51,7 +51,10 @@ export function handleTransfer(ev: TransferEvent): void {
     // The from account at least has to own one token
     from.tokensOwned  = BigInt.fromI32(1);
   }
-  from.tokensOwned -= BigInt.fromI32(1);
+  // Don't subtracts from the ZERO_ADDRESS (it's the one that mint the token)
+  if(from.id != ZERO_ADDRESS) {
+    from.tokensOwned -= BigInt.fromI32(1);
+  }
   from.save();
 
   if (to == null) {
@@ -69,9 +72,9 @@ export function handleTransfer(ev: TransferEvent): void {
   token.owner = to.id;
   token.save();
 
-  if(to.id == BURN_ADDRESS) {
+  if(to.id == ZERO_ADDRESS) {
     let event = Event.load(token.event);
-    if (event !== null) {
+    if (event != null) {
       event.tokenCount -= BigInt.fromI32(1);
       event.save();
     }
