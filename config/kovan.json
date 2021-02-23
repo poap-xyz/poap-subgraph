@@ -2,6 +2,6 @@
   "network": "kovan",
   "address": "0xd237716b056d5BF44181c471A7c633583b552D78",
   "startBlock": 20930523,
-  "name": "Poap",
+  "file": "Poap",
   "tokenEvent": "EventToken(uint256,uint256)"
 }

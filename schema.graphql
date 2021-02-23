@@ -3,16 +3,16 @@ type Token @entity
 	id:                           ID!
 	owner:                        Account!
 	event:                        Event
-  	transfers:                    [Transfer!]! @derivedFrom(field: "token")
-    transferCount:                BigInt!
-    created:                      BigInt!
+	transfers:                    [Transfer!]! @derivedFrom(field: "token")
+	transferCount:                BigInt!
+	created:                      BigInt!
 }
 
 type Account @entity
 {
 	id:                           ID!
 	tokens:                       [Token!]! @derivedFrom(field: "owner")
-    tokensOwned:                  BigInt!
+	tokensOwned:                  BigInt!
 }
 
 type Event @entity
@@ -20,7 +20,7 @@ type Event @entity
 	id:                           ID!
 	tokens:                       [Token!]! @derivedFrom(field: "event")
 	tokenCount:              	  BigInt!
-    created:                      BigInt!
+	created:                      BigInt!
 }
 
 type Transfer @entity
