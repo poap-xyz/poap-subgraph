@@ -4,19 +4,23 @@ type Token @entity
 	owner:                        Account!
 	event:                        Event
   	transfers:                    [Transfer!]! @derivedFrom(field: "token")
+    transferCount:                BigInt!
+    created:                      BigInt!
 }
 
 type Account @entity
 {
 	id:                           ID!
 	tokens:                       [Token!]! @derivedFrom(field: "owner")
+    tokensOwned:                  BigInt!
 }
 
 type Event @entity
 {
 	id:                           ID!
 	tokens:                       [Token!]! @derivedFrom(field: "event")
-	token_count:              	  BigInt!
+	tokenCount:              	  BigInt!
+    created:                      BigInt!
 }
 
 type Transfer @entity
