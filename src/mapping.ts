@@ -1,15 +1,15 @@
 import {
-	ethereum, BigInt
+  ethereum, BigInt
 } from '@graphprotocol/graph-ts'
 
 import {
-	EventToken as EventTokenEvent,
-	Transfer   as TransferEvent,
+  EventToken as EventTokenEvent,
+  Transfer   as TransferEvent,
 } from '../generated/Poap/Poap'
 
 import {
-	Token,
-	Account,
+  Token,
+  Account,
   Event,
   Transfer,
 } from '../generated/schema'
@@ -19,7 +19,7 @@ const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
 function createEventID(event: ethereum.Event): string
 {
-	return event.block.number.toString().concat('-').concat(event.logIndex.toString());
+  return event.block.number.toString().concat('-').concat(event.logIndex.toString());
 }
 
 export function handleEventToken(ev: EventTokenEvent): void
@@ -33,11 +33,11 @@ export function handleEventToken(ev: EventTokenEvent): void
     event.created     = ev.block.timestamp
   }
 
-	event.tokenCount    += BigInt.fromI32(1);
-	token.event         = event.id;
+  event.tokenCount    += BigInt.fromI32(1);
+  token.event         = event.id;
   token.created       = ev.block.timestamp
-	event.save();
-	token.save();
+  event.save();
+  token.save();
 }
 
 export function handleTransfer(ev: TransferEvent): void {
@@ -52,6 +52,7 @@ export function handleTransfer(ev: TransferEvent): void {
     from.tokensOwned  = BigInt.fromI32(1);
   }
   // Don't subtracts from the ZERO_ADDRESS (it's the one that mint the token)
+  // Avoid negative values
   if(from.id != ZERO_ADDRESS) {
     from.tokensOwned -= BigInt.fromI32(1);
   }
@@ -66,12 +67,14 @@ export function handleTransfer(ev: TransferEvent): void {
 
   if (token == null) {
     token               = new Token(ev.params.tokenId.toString());
-    token.transferCount = BigInt.fromI32(1);
+    token.transferCount = BigInt.fromI32(0);
     token.created       = ev.block.timestamp
   }
   token.owner = to.id;
+  token.transferCount += BigInt.fromI32(1);
   token.save();
 
+  // Burning the token
   if(to.id == ZERO_ADDRESS) {
     let event = Event.load(token.event);
     if (event != null) {
@@ -81,9 +84,9 @@ export function handleTransfer(ev: TransferEvent): void {
   }
 
   transfer.token       = token.id;
-	transfer.from        = from.id;
-	transfer.to          = to.id;
-	transfer.transaction = ev.transaction.hash;
-	transfer.timestamp   = ev.block.timestamp;
-	transfer.save();
+  transfer.from        = from.id;
+  transfer.to          = to.id;
+  transfer.transaction = ev.transaction.hash;
+  transfer.timestamp   = ev.block.timestamp;
+  transfer.save();
 }
