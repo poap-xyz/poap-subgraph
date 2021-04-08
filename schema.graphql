@@ -1,34 +1,34 @@
 type Token @entity
 {
-	id:                           ID!
-	owner:                        Account!
-	event:                        Event
-	transfers:                    [Transfer!]! @derivedFrom(field: "token")
-	transferCount:                BigInt!
-	created:                      BigInt!
+  id:                           ID!
+  owner:                        Account!
+  event:                        Event
+  transfers:                    [Transfer!]! @derivedFrom(field: "token")
+  transferCount:                BigInt!
+  created:                      BigInt!
 }
 
 type Account @entity
 {
-	id:                           ID!
-	tokens:                       [Token!]! @derivedFrom(field: "owner")
-	tokensOwned:                  BigInt!
+  id:                           ID!
+  tokens:                       [Token!]! @derivedFrom(field: "owner")
+  tokensOwned:                  BigInt!
 }
 
 type Event @entity
 {
-	id:                           ID!
-	tokens:                       [Token!]! @derivedFrom(field: "event")
-	tokenCount:              	  BigInt!
-	created:                      BigInt!
+  id:                           ID!
+  tokens:                       [Token!]! @derivedFrom(field: "event")
+  tokenCount:              	  BigInt!
+  created:                      BigInt!
 }
 
 type Transfer @entity
 {
-	id:                           ID!
-	token:                        Token!
-	from:                         Account!
-	to:                           Account!
-	transaction:                  Bytes!
-	timestamp:                    BigInt!
+  id:                           ID!
+  token:                        Token!
+  from:                         Account!
+  to:                           Account!
+  transaction:                  Bytes!
+  timestamp:                    BigInt!
 }
