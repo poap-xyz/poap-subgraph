@@ -78,14 +78,14 @@ export function handleTransfer(ev: TransferEvent): void {
   let event = Event.load(token.event);
 
   if(event != null) {
+    // Add one transfer
+    event.transferCount += BigInt.fromI32(1);
+
     // Burning the token
     if(to.id == ZERO_ADDRESS) {
       event.tokenCount    -= BigInt.fromI32(1);
       // Subtract all the transfers from the burned token
       event.transferCount -= token.transferCount;
-    } else {
-      // Add one transfer
-      event.transferCount += BigInt.fromI32(1);
     }
     event.save();
   }
