@@ -19,8 +19,9 @@ type Event @entity
 {
   id:                           ID!
   tokens:                       [Token!]! @derivedFrom(field: "event")
-  tokenCount:              	  BigInt!
+  tokenCount:              	    BigInt!
   created:                      BigInt!
+  transferCount:                BigInt!
 }
 
 type Transfer @entity

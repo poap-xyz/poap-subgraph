@@ -25,17 +25,18 @@ function createEventID(event: ethereum.Event): string
 export function handleEventToken(ev: EventTokenEvent): void
 {
   let event = Event.load(ev.params.eventId.toString());
-  let token = new Token(ev.params.tokenId.toString());
-  
+  // This handler always run after the transfer handler
+  let token = Token.load(ev.params.tokenId.toString());
   if (event == null) {
-    event             = new Event(ev.params.eventId.toString());
-    event.tokenCount  = BigInt.fromI32(0);
-    event.created     = ev.block.timestamp
+    event               = new Event(ev.params.eventId.toString());
+    event.tokenCount    = BigInt.fromI32(0);
+    event.transferCount = BigInt.fromI32(0);
+    event.created       = ev.block.timestamp
   }
 
   event.tokenCount    += BigInt.fromI32(1);
+  event.transferCount += BigInt.fromI32(1);
   token.event         = event.id;
-  token.created       = ev.block.timestamp
   event.save();
   token.save();
 }
@@ -74,13 +75,19 @@ export function handleTransfer(ev: TransferEvent): void {
   token.transferCount += BigInt.fromI32(1);
   token.save();
 
-  // Burning the token
-  if(to.id == ZERO_ADDRESS) {
-    let event = Event.load(token.event);
-    if (event != null) {
-      event.tokenCount -= BigInt.fromI32(1);
-      event.save();
+  let event = Event.load(token.event);
+
+  if(event != null) {
+    // Burning the token
+    if(to.id == ZERO_ADDRESS) {
+      event.tokenCount    -= BigInt.fromI32(1);
+      // Subtract all the transfers from the burned token
+      event.transferCount -= token.transferCount;
+    } else {
+      // Add one transfer
+      event.transferCount += BigInt.fromI32(1);
     }
+    event.save();
   }
 
   transfer.token       = token.id;
