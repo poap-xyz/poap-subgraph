@@ -6,6 +6,7 @@ type Token @entity
   transfers:                    [Transfer!]! @derivedFrom(field: "token")
   transferCount:                BigInt!
   created:                      BigInt!
+  TotalSupply:                  BigInt!
 }
 
 type Account @entity
@@ -22,6 +23,7 @@ type Event @entity
   tokenCount:              	    BigInt!
   created:                      BigInt!
   transferCount:                BigInt!
+  TotalSupply:                  BigInt!
 }
 
 type Transfer @entity
