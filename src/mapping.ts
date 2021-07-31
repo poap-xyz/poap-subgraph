@@ -31,13 +31,13 @@ export function handleEventToken(ev: EventTokenEvent): void
     event               = new Event(ev.params.eventId.toString());
     event.tokenCount    = BigInt.fromI32(0);
     event.transferCount = BigInt.fromI32(0);
-    event.TotalSupply  = BigInt.fromI32(0);
+    event.totalSupply  = BigInt.fromI32(0);
     event.created       = ev.block.timestamp
   }
 
   event.tokenCount    += BigInt.fromI32(1);
   event.transferCount += BigInt.fromI32(1);
-  event.TotalSupply += BigInt.fromI32(1);
+  event.totalSupply += BigInt.fromI32(1);
   token.event         = event.id;
   event.save();
   token.save();
@@ -71,12 +71,12 @@ export function handleTransfer(ev: TransferEvent): void {
   if (token == null) {
     token               = new Token(ev.params.tokenId.toString());
     token.transferCount = BigInt.fromI32(0);
-    token.TotalSupply = BigInt.fromI32(0);
+    token.totalSupply = BigInt.fromI32(0);
     token.created       = ev.block.timestamp
   }
   token.owner = to.id;
   token.transferCount += BigInt.fromI32(1);
-  token.TotalSupply += BigInt.fromI32(1);
+  token.totalSupply += BigInt.fromI32(1);
   token.save();
 
   let event = Event.load(token.event);
@@ -92,7 +92,7 @@ export function handleTransfer(ev: TransferEvent): void {
       // Subtract all the transfers from the burned token
       event.transferCount -= token.transferCount;
       //subtract from totalSupply once burned token
-      event.TotalSupply -= BigInt.fromI32(1);
+      event.totalSupply -= BigInt.fromI32(1);
     }
     event.save();
   }
