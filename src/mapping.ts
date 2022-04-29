@@ -37,6 +37,7 @@ export function handleEventToken(ev: EventTokenEvent): void
   event.tokenCount    += BigInt.fromI32(1);
   event.transferCount += BigInt.fromI32(1);
   token.event         = event.id;
+  token.mintOrder   = event.tokenCount;
   event.save();
   token.save();
 }
