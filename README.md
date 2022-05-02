@@ -11,6 +11,12 @@ yarn install
 
 Available networks: mainnet, xdai, sokol, kovan, ropsten 
 
+Add 
+```
+--product hosted-service --access-token {TOKEN} 
+```
+as extra parameters just after "graph deploy" in the package json and then execute the following:
+
 ```ssh
 yarn prepare:<network>
 yarn codegen
@@ -18,10 +24,6 @@ yarn build
 yarn deploy:<network>
 ```
 
-If you receive the next error while executing yarn deploy:<network>: 
-✖ Failed to deploy to Graph node https://api.thegraph.com/deploy/: Invalid account name or access token
- 
-Then you'd need to add --product hosted-service --access-token {TOKEN} just after graph deploy in the package json.
 
 ## Deployments
 
