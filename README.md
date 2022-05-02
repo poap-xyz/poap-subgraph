@@ -11,12 +11,19 @@ yarn install
 
 Available networks: mainnet, xdai, sokol, kovan, ropsten 
 
+Add 
+```
+--product hosted-service --access-token {TOKEN} 
+```
+as extra parameters just after "graph deploy" in the package json and then execute the following:
+
 ```ssh
 yarn prepare:<network>
 yarn codegen
 yarn build
 yarn deploy:<network>
 ```
+
 
 ## Deployments
 
