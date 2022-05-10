@@ -51,4 +51,4 @@ Subgraph page: [https://thegraph.com/explorer/subgraph/poap-xyz/poap-kovan](http
 ## Notes
 
 ### Sokol
-Previously none of the params of EventToken was indexed, due to a change in the ABI, newer events now have one of the params indexed and this may cause some issues with the-graph having to deal with malformed or missing entities for older events.
+Previously none of the params of EventToken was indexed, due to a change in the ABI, newer events now have one of the params indexed and this may cause some issues with the-graph having to deal with malformed or missing entities for older tokens.
