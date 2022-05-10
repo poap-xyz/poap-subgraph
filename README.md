@@ -47,3 +47,8 @@ Subgraph page: [https://thegraph.com/explorer/subgraph/poap-xyz/poap-ropsten](ht
 ### Kovan
 Endpoint: [https://api.thegraph.com/subgraphs/name/poap-xyz/poap-kovan](https://api.thegraph.com/subgraphs/name/poap-xyz/poap-kovan) \
 Subgraph page: [https://thegraph.com/explorer/subgraph/poap-xyz/poap-kovan](https://thegraph.com/explorer/subgraph/poap-xyz/poap-kovan) 
+
+## Notes
+
+### Sokol
+Previously none of the params of EventToken was indexed, due to a change in the ABI, newer events now have one of the params indexed and this may cause some issues with the-graph having to deal with malformed or missing entities for older tokens.
