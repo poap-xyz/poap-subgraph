@@ -30,14 +30,16 @@ export function handleEventToken(ev: EventTokenEvent): void
   if (event == null) {
     event               = new Event(ev.params.eventId.toString());
     event.tokenCount    = BigInt.fromI32(0);
+    event.tokenMints    = BigInt.fromI32(0);
     event.transferCount = BigInt.fromI32(0);
     event.created       = ev.block.timestamp
   }
 
   event.tokenCount    += BigInt.fromI32(1);
+  event.tokenMints    += BigInt.fromI32(1);
   event.transferCount += BigInt.fromI32(1);
   token.event         = event.id;
-  token.mintOrder   = event.tokenCount;
+  token.mintOrder   = event.tokenMints;
   event.save();
   token.save();
 }
