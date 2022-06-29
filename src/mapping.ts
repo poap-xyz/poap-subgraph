@@ -74,6 +74,9 @@ export function handleTransfer(ev: TransferEvent): void {
     token.transferCount = BigInt.fromI32(0);
     token.created       = ev.block.timestamp
   }
+  if (to.id == ZERO_ADDRESS) {
+    token.ownerBeforeBurn = from.id;
+  }
   token.owner = to.id;
   token.transferCount += BigInt.fromI32(1);
   token.save();
