@@ -7,8 +7,6 @@ type Token @entity
   transferCount:                BigInt!
   created:                      BigInt!
   mintOrder:                    BigInt
-  # The last account to hold the token before being burned.
-  ownerBeforeBurn:              Account
 }
 
 type Account @entity
