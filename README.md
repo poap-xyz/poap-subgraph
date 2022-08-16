@@ -2,35 +2,47 @@
 
 This Subgraph sources events from the POAP contract in different networks.
 
-## Deploying the subgraph:
+## Deploying the Subgraph:
 
-**First time only**
-```ssh
+**First time only**:
+```sh
 yarn install
 ```
 
-Available networks: mainnet, xdai, sokol, kovan, ropsten 
+The currently available networks for deploying the POAP Subgraph are:
+* mainnet
+* xdai
+* sokol
+* kovan
+* ropsten 
 
-Add 
+Before deploying, you will need to add:
 ```
 --product hosted-service --access-token {TOKEN} 
 ```
-as extra parameters just after "graph deploy" in the package json and then execute the following:
-
-```ssh
+as extra parameters just after the [`graph deploy`](https://github.com/poap-xyz/poap-subgraph/blob/master/package.json#L14-L18)
+command for the network you intend to deploy to in [`package.json`](https://github.com/poap-xyz/poap-subgraph/blob/master/package.json).
+Then execute the following:
+```sh
 yarn prepare:<network>
 yarn codegen
 yarn build
 yarn deploy:<network>
 ```
 
-**Good practices**
-A good practice to deploy in mainnet or xdai is to have a duplicate/backup subgraph so that if something goes wrong, the traffic can be redirected to the duplicate subgraph instead of having to wait for the subgraph to re-deploy/rollback to a previous version. In Xdai/Gnosis it can take at least 2 days to sync.
+### Best practices
+When deploying to mainnet or xdai, it's best to have a duplicate/backup subgraph so that if something goes wrong, the traffic can be redirected to the duplicate subgraph instead of having to wait for the subgraph to re-deploy/rollback to a previous version. On xdai/Gnosis it can take at least 2 days to sync!
 
-To build a duplicate, you need to create a new subgraph through the-graph profile. Once the new path is provided you can use the next curl to deploy a duplicate WITHOUT NEEDING to resync all over again just by copying the ID of the subgraph you are trying to duplicate.
+### Duplicating the Subgraph
 
-```ssh
-curl -H "content-type: application/json" -H "authorization: Bearer {TOKEN}" --data '{"jsonrpc": "2.0", "method": "subgraph_deploy", "params": { "name": "poap-xyz/{duplicate_subgraph_path}", "ipfs_hash": "{ID_HASH_FOUND_IN_THE_ORIGINAL_SUBGRAPH}"}, "id": "1"}' https://api.thegraph.com/deploy/
+To build a duplicate, you first need to create a new subgraph through your profile on the [The Graph explorer](https://thegraph.com/explorer/).
+Once you receive the path for the newly created subgraph, you can use `curl` to deploy a duplicate *WITHOUT NEEDING* to resync all over again.
+To do this you simply need to specify the IPFS Hash ID of the Subgraph you are trying to duplicate from in your deployment command:
+```sh
+curl -H "content-type: application/json" \
+     -H "authorization: Bearer {TOKEN}" \
+     --data '{"jsonrpc": "2.0", "method": "subgraph_deploy", "params": { "name": "{NEW_SUBGRAPH_PATH}", "ipfs_hash": "{ORIGINAL_SUBGRAPH_IPFS_HASH_ID}"}, "id": "1"}' \
+     https://api.thegraph.com/deploy/
 ```
 
 ## Deployments
@@ -59,4 +71,4 @@ Subgraph page: [https://thegraph.com/explorer/subgraph/poap-xyz/poap-kovan](http
 ## Notes
 
 ### Sokol
-Previously none of the params of EventToken was indexed, due to a change in the ABI, newer events now have one of the params indexed and this may cause some issues with the-graph having to deal with malformed or missing entities for older tokens.
+Previously none of the params of `EventToken` were indexed due to a change in the ABI. Newer events now have one of the params indexed and this may cause some issues with The Graph having to deal with malformed or missing entities for older tokens.
