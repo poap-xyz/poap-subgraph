@@ -10,12 +10,14 @@
     "prepare:kovan": "mustache config/kovan.json subgraph.template.yaml > subgraph.yaml",
     "prepare:xdai": "mustache config/xdai.json subgraph.template.yaml > subgraph.yaml",
     "prepare:sokol": "mustache config/sokol.json subgraph.template.yaml > subgraph.yaml",
+    "prepare:goerli": "mustache config/goerli.json subgraph.template.yaml > subgraph.yaml",
 
     "deploy:mainnet": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ poap-xyz/poap",
     "deploy:ropsten": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ poap-xyz/poap-ropsten",
     "deploy:kovan": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ poap-xyz/poap-kovan",
     "deploy:xdai": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ poap-xyz/poap-xdai",
     "deploy:sokol": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ poap-xyz/poap-sokol",
+    "deploy:goerli": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ poap-xyz/poap-goerli",
 
     "create-local": "graph create --node http://localhost:8020/ poap-xyz/poap",
     "remove-local": "graph remove --node http://localhost:8020/ poap-xyz/poap",
