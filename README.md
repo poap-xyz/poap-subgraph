@@ -9,9 +9,22 @@ This Subgraph sources events from the POAP contract in different networks.
 yarn install
 ```
 
-Available networks: mainnet, xdai, sokol, kovan, ropsten 
+Available networks: mainnet, xdai, chiado, goerli
 
-Add 
+**Chiado deployment**
+
+Chiado is not index by The Graph so we use Goldsky
+
+First run:
+
+```ssh
+goldsky login
+```
+
+If you already have an existing Chiado subgraph you will have to delete it to deploy the new one
+
+**Deploy** 
+
 ```
 --product hosted-service --access-token {TOKEN} 
 ```
@@ -45,8 +58,8 @@ Subgraph page: [https://thegraph.com/explorer/subgraph/poap-xyz/poap-xdai](https
 
 
 ### Sokol
-Endpoint: [https://api.thegraph.com/subgraphs/name/poap-xyz/poap-sokol](https://api.thegraph.com/subgraphs/name/poap-xyz/poap-sokol) \
-Subgraph page: [https://thegraph.com/explorer/subgraph/poap-xyz/poap-sokol](https://thegraph.com/explorer/subgraph/poap-xyz/poap-sokol) 
+Endpoint: [https://api.goldsky.com/api/public/project_clcquosqr8v0k0iwk5rs87x2l/subgraphs/poap-xyz/poap-chiado/gn](https://api.goldsky.com/api/public/project_clcquosqr8v0k0iwk5rs87x2l/subgraphs/poap-xyz/poap-chiado/gn) \
+Subgraph page: [https://api.goldsky.com/api/public/project_clcquosqr8v0k0iwk5rs87x2l/subgraphs/poap-xyz/poap-chiado/gn](https://api.goldsky.com/api/public/project_clcquosqr8v0k0iwk5rs87x2l/subgraphs/poap-xyz/poap-chiado/gn) 
 
 ### Goerli
 Endpoint: [https://api.thegraph.com/subgraphs/name/poap-xyz/poap-goerli](https://api.thegraph.com/subgraphs/name/poap-xyz/poap-goerli) \
