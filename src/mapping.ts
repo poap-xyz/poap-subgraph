@@ -32,6 +32,7 @@ export function handleEventToken(ev: EventTokenEvent): void
     event.tokenCount    = BigInt.fromI32(0);
     event.transferCount = BigInt.fromI32(0);
     event.created       = ev.block.timestamp
+    // needs event.tokenMints to be set. Made it optional in the schema.
   }
 
   event.tokenCount = event.tokenCount.plus(BigInt.fromI32(1));
