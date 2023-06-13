@@ -65,3 +65,6 @@ subgraph.yaml
 
 build
 generated
+.git
+.gitignore
+.vscode
