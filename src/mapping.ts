@@ -35,9 +35,11 @@ export function handleEventToken(ev: EventTokenEvent): void
     event.created       = ev.block.timestamp
   }
 
-  event.tokenCount = event.tokenCount.plus(BigInt.fromI32(1));
-  event.transferCount = event.transferCount.plus(BigInt.fromI32(1));
+  event.tokenCount    += BigInt.fromI32(1);
+  event.tokenMints    += BigInt.fromI32(1);
+  event.transferCount += BigInt.fromI32(1);
   token.event         = event.id;
+  token.mintOrder     = event.tokenMints;
   event.save();
   token.save();
 }
@@ -56,7 +58,7 @@ export function handleTransfer(ev: TransferEvent): void {
   // Don't subtracts from the ZERO_ADDRESS (it's the one that mint the token)
   // Avoid negative values
   if(from.id != ZERO_ADDRESS) {
-    from.tokensOwned = from.tokensOwned.minus(BigInt.fromI32(1));
+    from.tokensOwned -= BigInt.fromI32(1);
   }
   from.save();
 
@@ -64,7 +66,7 @@ export function handleTransfer(ev: TransferEvent): void {
     to              = new Account(ev.params.to.toHex());
     to.tokensOwned  = BigInt.fromI32(0);
   }
-  to.tokensOwned = to.tokensOwned.plus(BigInt.fromI32(1));
+  to.tokensOwned += BigInt.fromI32(1);
   to.save();
 
   if (token == null) {
@@ -73,7 +75,7 @@ export function handleTransfer(ev: TransferEvent): void {
     token.created       = ev.block.timestamp
   }
   token.owner = to.id;
-  token.transferCount = token.transferCount.plus(BigInt.fromI32(1));
+  token.transferCount += BigInt.fromI32(1);
   token.save();
 
 
@@ -82,13 +84,13 @@ export function handleTransfer(ev: TransferEvent): void {
 
     if(event != null) {
       // Add one transfer
-      event.transferCount = event.transferCount.plus(BigInt.fromI32(1));
+      event.transferCount += BigInt.fromI32(1);
   
       // Burning the token
       if(to.id == ZERO_ADDRESS) {
-        event.tokenCount = event.tokenCount.minus(BigInt.fromI32(1));
+        event.tokenCount    -= BigInt.fromI32(1);
         // Subtract all the transfers from the burned token
-        event.transferCount = event.transferCount.minus(token.transferCount);
+        event.transferCount -= token.transferCount;
       }
       event.save();
     }
