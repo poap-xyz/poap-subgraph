@@ -23,7 +23,7 @@ type Event @entity
   tokenCount:              	    BigInt!
   created:                      BigInt!
   transferCount:                BigInt!
-  tokenMints:                   BigInt
+  tokenMints:                   BigInt!
 }
 
 type Transfer @entity
