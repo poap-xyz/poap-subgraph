@@ -26,7 +26,7 @@ export function handleEventToken(ev: EventTokenEvent): void
 {
   let event = Event.load(ev.params.eventId.toString());
   // This handler always run after the transfer handler
-  let token = Token.load(ev.params.tokenId.toString());
+  let token = Token.load(ev.params.tokenId.toString())!;
   if (event == null) {
     event               = new Event(ev.params.eventId.toString());
     event.tokenCount    = BigInt.fromI32(0);
@@ -39,7 +39,7 @@ export function handleEventToken(ev: EventTokenEvent): void
   event.tokenMints    += BigInt.fromI32(1);
   event.transferCount += BigInt.fromI32(1);
   token.event         = event.id;
-  token.mintOrder   = event.tokenMints;
+  token.mintOrder     = event.tokenMints;
   event.save();
   token.save();
 }
@@ -78,20 +78,25 @@ export function handleTransfer(ev: TransferEvent): void {
   token.transferCount += BigInt.fromI32(1);
   token.save();
 
-  let event = Event.load(token.event);
 
-  if(event != null) {
-    // Add one transfer
-    event.transferCount += BigInt.fromI32(1);
+  if (token.event != null) {
+    let event = Event.load(token.event as string);
 
-    // Burning the token
-    if(to.id == ZERO_ADDRESS) {
-      event.tokenCount    -= BigInt.fromI32(1);
-      // Subtract all the transfers from the burned token
-      event.transferCount -= token.transferCount;
+    if(event != null) {
+      // Add one transfer
+      event.transferCount += BigInt.fromI32(1);
+  
+      // Burning the token
+      if(to.id == ZERO_ADDRESS) {
+        event.tokenCount    -= BigInt.fromI32(1);
+        // Subtract all the transfers from the burned token
+        event.transferCount -= token.transferCount;
+      }
+      event.save();
     }
-    event.save();
   }
+
+  
 
   transfer.token       = token.id;
   transfer.from        = from.id;
