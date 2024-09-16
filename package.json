@@ -5,13 +5,13 @@
     "codegen": "graph codegen",
     "build": "graph build",
 
-    "prepare:mainnet": "mustache config/mainnet.json subgraph.template.yaml > subgraph.yaml",
-    "prepare:xdai": "mustache config/xdai.json subgraph.template.yaml > subgraph.yaml",
+    "prepare:ethereum": "mustache config/ethereum.json subgraph.template.yaml > subgraph.yaml",
+    "prepare:gnosis": "mustache config/gnosis.json subgraph.template.yaml > subgraph.yaml",
     "prepare:chiado": "mustache config/chiado.json subgraph.template.yaml > subgraph.yaml",
     "prepare:sepolia": "mustache config/sepolia.json subgraph.template.yaml > subgraph.yaml",
 
-    "deploy:mainnet": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ poap-xyz/poap",
-    "deploy:xdai": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ poap-xyz/poap-xdai",
+    "deploy:ethereum": "goldsky subgraph deploy poaps-ethereum/1.0.0",
+    "deploy:gnosis": "goldsky subgraph deploy poaps-gnosis/1.0.0",
     "deploy:chiado": "goldsky subgraph deploy poaps-chiado/1.0.0",
     "deploy:sepolia": "goldsky subgraph deploy poaps-sepolia/1.0.0",
 
