@@ -38,13 +38,13 @@ yarn deploy:<network>
 ## Deployments
 
 ### Ethereum
-Endpoint: [https://api.goldsky.com/api/public/project_clcquosqr8v0k0iwk5rs87x2l/subgraphs/poaps-ethereum/1.0.0/gn](https://api.goldsky.com/api/public/project_clcquosqr8v0k0iwk5rs87x2l/subgraphs/poaps-chiado/1.0.0/gn) \
-Subgraph page: [https://api.goldsky.com/api/public/project_clcquosqr8v0k0iwk5rs87x2l/subgraphs/poaps-ethereum/1.0.0/gn](https://api.goldsky.com/api/public/project_clcquosqr8v0k0iwk5rs87x2l/subgraphs/poaps-chiado/1.0.0/gn) 
+Endpoint: [https://api.goldsky.com/api/public/project_cm19s0xqbabkt01x529py0iu8/subgraphs/poaps-ethereum/1.0.0/gn](https://api.goldsky.com/api/public/project_cm19s0xqbabkt01x529py0iu8/subgraphs/poaps-chiado/1.0.0/gn) \
+Subgraph page: [https://api.goldsky.com/api/public/project_cm19s0xqbabkt01x529py0iu8/subgraphs/poaps-ethereum/1.0.0/gn](https://api.goldsky.com/api/public/project_cm19s0xqbabkt01x529py0iu8/subgraphs/poaps-ethereum/1.0.0/gn) 
 
 
 ### Gnosis
-Endpoint: [https://api.goldsky.com/api/public/project_clcquosqr8v0k0iwk5rs87x2l/subgraphs/poaps-gnosis/1.0.0/gn](https://api.goldsky.com/api/public/project_clcquosqr8v0k0iwk5rs87x2l/subgraphs/poaps-chiado/1.0.0/gn) \
-Subgraph page: [https://api.goldsky.com/api/public/project_clcquosqr8v0k0iwk5rs87x2l/subgraphs/poaps-gnosis/1.0.0/gn](https://api.goldsky.com/api/public/project_clcquosqr8v0k0iwk5rs87x2l/subgraphs/poaps-chiado/1.0.0/gn) 
+Endpoint: [https://api.goldsky.com/api/public/project_cm19s0xqbabkt01x529py0iu8/subgraphs/poaps-gnosis/1.0.0/gn](https://api.goldsky.com/api/public/project_cm19s0xqbabkt01x529py0iu8/subgraphs/poaps-chiado/1.0.0/gn) \
+Subgraph page: [https://api.goldsky.com/api/public/project_cm19s0xqbabkt01x529py0iu8/subgraphs/poaps-gnosis/1.0.0/gn](https://api.goldsky.com/api/public/project_cm19s0xqbabkt01x529py0iu8/subgraphs/poaps-chiado/1.0.0/gn) 
 
 
 ### Chiado
