@@ -65,3 +65,9 @@ subgraph.yaml
 
 build
 generated
+
+# Local network configuration
+config/chiado.json
+config/ethereum.json
+config/gnosis.json
+config/sepolia.json

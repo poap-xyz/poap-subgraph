@@ -9,6 +9,38 @@ This Subgraph sources events from the POAP contract in different networks.
 yarn install
 ```
 
+Add the descriptions in /config/* removing the .template
+
+For example:
+
+`ethereum.template.json`
+
+```
+{
+  "network": "mainnet",
+  "address": "0x22C1f6050E56d2876009903609a2cC3fEf83B415",
+  "startBlock": 7844214,
+  "file": "Poap",
+  "tokenEvent": "EventToken(uint256,uint256)",
+  "description": "<ADD ME>"
+}
+```
+Copy and change the descrpition to
+
+`ethereum.json`
+
+```
+{
+  "network": "mainnet",
+  "address": "0x22C1f6050E56d2876009903609a2cC3fEf83B415",
+  "startBlock": 7844214,
+  "file": "Poap",
+  "tokenEvent": "EventToken(uint256,uint256)",
+  "description": "My Test POAP Subgraph on Mainnet"
+}
+```
+
+
 Available networks: ethereum, gnosis, chiado, goerli
 
 **Goldsky deployment** 

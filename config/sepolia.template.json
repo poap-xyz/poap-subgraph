@@ -3,5 +3,6 @@
   "address": "0x22C1f6050E56d2876009903609a2cC3fEf83B415",
   "startBlock": 6673969  ,
   "file": "Poap",
-  "tokenEvent": "EventToken(uint256,uint256)"
+  "tokenEvent": "EventToken(uint256,uint256)",
+  "description": "<ADD ME>"
 }
