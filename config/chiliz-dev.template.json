@@ -1,0 +1,8 @@
+{
+  "network": "chiliz",
+  "address": "0xfD4F23D0fe6d2C99b94F18fe270eE5Bfe70a4777",
+  "startBlock": 18217339,
+  "file": "XPoap",
+  "tokenEvent": "EventToken(indexed uint256,uint256)",
+  "description": "<ADD ME>"
+}
