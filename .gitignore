@@ -71,3 +71,5 @@ config/chiado.json
 config/ethereum.json
 config/gnosis.json
 config/sepolia.json
+config/chiliz-dev.json
+config/chiliz.json
