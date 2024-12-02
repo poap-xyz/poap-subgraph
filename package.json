@@ -11,6 +11,8 @@
     "prepare:sepolia": "mustache config/sepolia.json subgraph.template.yaml > subgraph.yaml",
     "prepare:chiliz-dev": "mustache config/chiliz-dev.json subgraph.template.yaml > subgraph.yaml",
     "prepare:chiliz": "mustache config/chiliz.json subgraph.template.yaml > subgraph.yaml",
+    "prepare:base-sepolia": "mustache config/base-sepolia.json subgraph.template.yaml > subgraph.yaml",
+    "prepare:base": "mustache config/base.json subgraph.template.yaml > subgraph.yaml",
 
     "deploy:ethereum": "goldsky subgraph deploy poaps-ethereum/1.0.0",
     "deploy:gnosis": "goldsky subgraph deploy poaps-gnosis/1.0.0",
@@ -18,6 +20,8 @@
     "deploy:sepolia": "goldsky subgraph deploy poaps-sepolia/1.0.0",
     "deploy:chiliz-dev": "goldsky subgraph deploy poaps-chiliz-dev/1.0.0",
     "deploy:chiliz": "goldsky subgraph deploy poaps-chiliz/1.0.0",
+    "deploy:base-sepolia": "goldsky subgraph deploy poaps-base-sepolia/1.0.0",
+    "deploy:base": "goldsky subgraph deploy poaps-base/1.0.0",
 
     "create-local": "graph create --node http://localhost:8020/ poap-xyz/poap",
     "remove-local": "graph remove --node http://localhost:8020/ poap-xyz/poap",
