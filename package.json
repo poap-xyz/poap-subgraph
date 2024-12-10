@@ -13,6 +13,10 @@
     "prepare:chiliz": "mustache config/chiliz.json subgraph.template.yaml > subgraph.yaml",
     "prepare:base-sepolia": "mustache config/base-sepolia.json subgraph.template.yaml > subgraph.yaml",
     "prepare:base": "mustache config/base.json subgraph.template.yaml > subgraph.yaml",
+    "prepare:ape-curtis": "mustache config/ape-curtis.json subgraph.template.yaml > subgraph.yaml",
+    "prepare:ape": "mustache config/ape.json subgraph.template.yaml > subgraph.yaml",
+    "prepare:arbitrium-sepolia": "mustache config/arbitrium-sepolia.json subgraph.template.yaml > subgraph.yaml",
+    "prepare:arbitrium": "mustache config/arbitrium.json subgraph.template.yaml > subgraph.yaml",
 
     "deploy:ethereum": "goldsky subgraph deploy poaps-ethereum/1.0.0",
     "deploy:gnosis": "goldsky subgraph deploy poaps-gnosis/1.0.0",
@@ -22,6 +26,10 @@
     "deploy:chiliz": "goldsky subgraph deploy poaps-chiliz/1.0.0",
     "deploy:base-sepolia": "goldsky subgraph deploy poaps-base-sepolia/1.0.0",
     "deploy:base": "goldsky subgraph deploy poaps-base/1.0.0",
+    "deploy:ape-curtis": "goldsky subgraph deploy poaps-ape-curtis/1.0.0",
+    "deploy:ape": "goldsky subgraph deploy poaps-ape/1.0.0",
+    "deploy:arbitrium-sepolia": "goldsky subgraph deploy poaps-arbitrium-sepolia/1.0.0",
+    "deploy:arbitrium": "goldsky subgraph deploy poaps-arbitrium/1.0.0",
 
     "create-local": "graph create --node http://localhost:8020/ poap-xyz/poap",
     "remove-local": "graph remove --node http://localhost:8020/ poap-xyz/poap",
