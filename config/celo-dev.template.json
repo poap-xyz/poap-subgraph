@@ -1,0 +1,8 @@
+{
+  "network": "celo",
+  "address": "0x7F81058b609619B742885AE004e3566644e314Ba",
+  "startBlock": 29652412,
+  "file": "XPoap",
+  "tokenEvent": "EventToken(indexed uint256,uint256)",
+  "description": "<ADD ME>"
+}
