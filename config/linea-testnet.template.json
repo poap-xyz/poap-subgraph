@@ -1,0 +1,8 @@
+{
+  "network": "linea-testnet",
+  "address": "0x22C1f6050E56d2876009903609a2cC3fEf83B415",
+  "startBlock": 7920888,
+  "file": "XPoap",
+  "tokenEvent": "EventToken(indexed uint256,uint256)",
+  "description": "<ADD ME>"
+}
