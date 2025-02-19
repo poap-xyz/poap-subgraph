@@ -45,7 +45,7 @@ export function handleEventToken(ev: EventTokenEvent): void
 }
 
 export function handleTransfer(ev: TransferEvent): void {
-  let token     = Token.load(ev.params.tokenId.toString());
+  let token    = Token.load(ev.params.tokenId.toString());
   let from     = Account.load(ev.params.from.toHex());
   let to       = Account.load(ev.params.to.toHex());
   let transfer = new Transfer(createEventID(ev));
